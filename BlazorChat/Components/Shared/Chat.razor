@@ -1,0 +1,154 @@
+﻿@rendermode InteractiveServer
+@using Azure
+@using BlazorChat.Components.Shared
+@using BlazorChat.Models
+@using BlazorChat.Services
+@using Markdig
+@using Microsoft.SemanticKernel.ChatCompletion;
+@inject IConfiguration _configuration
+@inject IJSRuntime _jsRuntime
+<div class="fixed bottom-0 right-0 m-4 mb-0 z-50 bg-white shadow-lg rounded-t-lg overflow-hidden transition-height duration-300 @(isMaximized ? "ease-in-out h-14" : "ease-in-out h-3/4")">
+    <div class="p-4 border-b">
+        <h2 class="text-2xl text-center font-semibold">Chat</h2>
+        <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-blue-300"
+                @onclick="@(() => {ToggleRotation(); ToggleSize();})">
+            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 10 4 4 4-4" />
+            </svg>
+        </button>
+    </div>
+    <div id="chat" class="p-4 h-96 overflow-y-scroll">
+        @foreach (var item in messages)
+        {
+            <div>
+                @if (item.Role == AuthorRole.User)
+                {
+                    <div class="flex items-end justify-end">
+                        <div class="bg-blue-500 text-white rounded px-4 py-2 m-2">@item.Text</div>
+                    </div>
+                }
+                else
+                {
+                    <div class="flex items-end justify-start">
+                        <div class="bg-gray-200 rounded px-4 py-2 m-2">
+                            <MarkdownRenderer Markdown="@item.Text" />
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="flex justify-center items-end p-4 border-t space-x-2">
+        <input @bind="prompt" @onkeydown="HandleEnterPress" disabled="@Processing" type="text" class="flex-1 p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type a message...">
+        <button @onclick="CallChatGPT" disabled="@Processing" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50">
+            Send
+        </button>
+    </div>
+
+</div>
+
+
+@code {
+    private List<Message> messages = [];
+    private string prompt = string.Empty;
+    private string ErrorMessage = "";
+    private bool Processing = false;
+    private bool isMaximized = false;
+    private int TotalTokens = 0;
+    private bool rotated = false;
+    private string rotationStyle => rotated ? "transform: rotate(180deg);" : "transform: rotate(0deg);";
+
+
+    private void ToggleRotation()
+    {
+        rotated = !rotated;
+    }
+
+    [Inject]
+    public ChatService ChatService { get; set; } = default!;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await _jsRuntime.InvokeAsync<string>("ScrollToBottom", "chatcontainer");
+        }
+        catch
+        {
+            // do nothing if this fails
+        }
+    }
+
+    void RestartChatGPT()
+    {
+        prompt = "Write a 10 word description of OpenAI ChatGPT";
+        messages = [];
+        TotalTokens = 0;
+        ErrorMessage = "";
+        StateHasChanged();
+    }
+
+    async Task CallChatGPT()
+    {
+        if (string.IsNullOrEmpty(prompt)) return;
+        try
+        {
+            // Set Processing to true to indicate that the method is processing
+            Processing = true;
+            messages.Add(new Message(prompt, AuthorRole.User, 0));
+
+            messages.Add(new Message(string.Empty, AuthorRole.Assistant, 0));
+            // Call StateHasChanged to refresh the UI
+            StateHasChanged();
+            // Clear any previous error messages
+            ErrorMessage = "";
+            // Add the new message to chatMessages
+            // string response = await ChatService.SendMessageAsync(prompt);
+
+            var stream = ChatService.SendMessageStreamAsync(prompt);
+            // Clear the prompt variable
+            prompt = "";
+            await foreach (var chunk in stream)
+            {
+                messages.Last().Text += chunk;
+                await InvokeAsync(StateHasChanged);
+            }
+
+            //messages = ChatService.ChatHistory.Select(c => new Message(c.Items[0].ToString(), c.Role, 0)).ToList();
+
+        }
+        catch (Exception ex)
+        {
+            // Set ErrorMessage to the exception message if an error occurs
+            ErrorMessage = ex.Message;
+        }
+        finally
+        {
+
+            // Set Processing to false to indicate
+            // that the method is done processing
+            Processing = false;
+            // Call StateHasChanged to refresh the UI
+            StateHasChanged();
+        }
+    }
+    private async Task HandleEnterPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            // Call the function you want to execute
+            await CallChatGPT();
+        }
+    }
+
+    private void ToggleSize()
+    {
+        isMaximized = !isMaximized;
+    }
+
+    private string GetButtonLabel()
+    {
+        return isMaximized ? "Restore" : "Maximize";
+    }
+}

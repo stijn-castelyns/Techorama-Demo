@@ -1,0 +1,21 @@
+﻿@using BlazorChat.Components.Shared
+@inherits LayoutComponentBase
+
+
+<NavMenu />
+<main>
+    <div class="relative min-h-screen bg-gray-100">
+        <!-- Content -->
+        <div class="p-4">
+            @Body
+        </div>
+        <!-- Chat Component -->
+        <Chat />
+    </div>
+</main>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>

@@ -1,0 +1,307 @@
+﻿<html
+  xmlns:mso="urn:schemas-microsoft-com:office:office"
+  xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+>
+  <head>
+    <title>.NET Patterns and Best Practices Workshop</title>
+    <meta name="NumberOfDays" content="5" />
+    <!--[if gte mso 9
+      ]><xml>
+        <mso:CustomDocumentProperties>
+          <mso:ContentTypeId msdt:dt="string"
+            >0x0101009C33340F38E14D1EABEAC83093A8F17200CC4EDD6B6BFD0C4EADC836B510B92464</mso:ContentTypeId
+          >
+        </mso:CustomDocumentProperties>
+      </xml><!
+    [endif]-->
+  </head>
+
+  <body>
+    <h2>Learning Goals</h2>
+    <p>
+      So how can you become a better developer? One of the best ways is by
+      learning design patterns. Design Patterns provide reusable solutions to
+      solve common software design problems. In this training we identify
+      software design problems and see how to address these using the best
+      suited <em>Design Pattern</em>. We will also look at modern C# language
+      features, S.O.L.I.D. principles, and apply what we've learned. Modern day
+      developers should also know about Reactive Programming which makes certain
+      complex problems a breeze to implement. Finally we finish building a
+      reusable library always keeping things like backward compatibility and
+      developer ease-of-use in mind! We will also discuss some anti-patterns,
+      such as 'string based programming'.
+    </p>
+    <h2>Target Audience</h2>
+    <p>
+      This course is intended for experienced programmers who are familiar with
+      VB.NET or C# and have a working experience of .NET (Framework or Core).
+      All examples and labs use the latest LTS version of .NET and Visual
+      Studio. Labs also work with any recent .NET and VS version.
+    </p>
+    <h2>Course Outline</h2>
+    <h3>Principles to get acquainted with</h3>
+    <h4>SOLID principles</h4>
+    <p>
+      SOLID principles were introduced by Robert C. Martin (a.k.a Uncle Bob) in
+      2000. The intention of these principles is to make software designs more
+      understandable, easier to maintain and extend. These principles are
+      essential for every developer to know, because it will help them in
+      writing better code an better understanding other code that was written
+      with these principles in mind.
+    </p>
+    <ul>
+      <li>S - Single Responsibility</li>
+      <li>O - Open/Closed</li>
+      <li>L - Liskov Substitution</li>
+      <li>I - Interface Segregation</li>
+      <li>D - Dependency Inversion</li>
+    </ul>
+
+    <h3>Design Patterns</h3>
+    <h4>Introduction to Patterns</h4>
+    <p>
+      One might not believe it, but design patterns do not find their origin in
+      software architecture. Patterns were first described in the 1970s by a
+      real "Bricks and Stones" architect. A pattern is defined as a re-usable
+      solution to a common type of problem, without ever repeating the actual
+      way the solution is implemented. This means that patterns are an ideal
+      learning tool and also ideal for communicating design ideas. Of course
+      there are also anti-patterns, things often used, but actually better
+      avoided.
+    </p>
+    <ul>
+      <li>What is a Pattern?</li>
+      <li>
+        The Gang of Four: Erich Gamma, Ralph Johnson, Richard Helm and John
+        Vlissides.
+      </li>
+      <li>
+        Different kinds of design patterns: creational, structural and
+        behavioral patterns.
+      </li>
+      <li>
+        Patterns everywhere: the difference between implementation, design and
+        architecture patterns...
+      </li>
+      <li>When to apply patterns, and when not to.</li>
+      <li>Some anti-patterns such as Loosy-Goosy.</li>
+    </ul>
+
+    <h4>Creational patterns</h4>
+    <p>
+      When creating software, you feel yourself continuously creating new
+      objects. Although the basic form of creating new objects is not bad, it
+      can result in design problems or added complexity to the design.
+      Creational patterns will help you deal with object creation that is
+      suitable to the situation.
+    </p>
+    <ul>
+      <li>
+        Singleton - a.k.a. The Pluto Pattern and how to implement it in .NET
+      </li>
+      <li>LAB: Building a Singleton in .NET</li>
+      <li>Builders - seperating the construction from the representation</li>
+      <li>
+        Factory Method - delegating/hiding the creation of objects to a factory
+      </li>
+      <li>
+        Abstract Factory - abstracting the factory to create families of objects
+      </li>
+      <li>LAB: Implementing an Abstract Factory</li>
+    </ul>
+
+    <h4>Behavioral patterns</h4>
+    <p>
+      Once your objects are created, they start interacting. When you're not
+      careful, these interactions can quickly start leading into code that is
+      tightly coupled. Behavioral design patterns help with identifying common
+      communication patterns between objects and realize these patterns. By
+      correctly applying these patterns, you can increase flexibility in
+      carrying out the interaction between objects.
+    </p>
+    <ul>
+      <li>
+        Template Method - defer exact parts of an algorithm to inheriting
+        classes, delegates, ...
+      </li>
+      <li>LAB: Building a Template Method for a board game</li>
+      <li>Strategy - template method without the annoying inheritance</li>
+      <li>LAB: Implementing a Builder as a Strategy</li>
+      <li>
+        Chain of Responsibility - strategy to go through a chain of strategies
+      </li>
+      <li>LAB: Using a Chain of Responsibility to implement a Builder</li>
+      <li>
+        State - defer state dependending logic to state classes, state machines,
+      </li>
+      <li>Using the Stateless library</li>
+      <li>
+        LAB: Implementing a VCR with the State patterns using the Stateless
+        library
+      </li>
+      <li>
+        Iterator - providing a generic way of navigating through collections,
+        yield is your friend, asynchronously iterating a collection
+      </li>
+      <li>
+        Observer - notifying whoever is interested in what you have to say,
+        events vs. delegates
+      </li>
+      <li>
+        Mediator - providing two-way communication between objects unaware of
+        one another, correcly implementing INotifyPropertyChanged
+      </li>
+      <li>LAB: Avoiding the String-based programming anti-pattern</li>
+    </ul>
+
+    <!-- <h4>More loose coupling using dependency injection</h4>
+    <p>
+      When writing code, you have to make sure you are not introducing
+      unnecessary dependencies on other objects. Dependencies will just cost you
+      on the long run since they are harder to maintain, not easily testable,
+      exchangeable, ... . If you need to depend on another, then depend on the
+      interface. Interfaces describe the dependency, but do not force it. Now,
+      you don't want those dependencies to be filled hard coded and this is
+      where dependency injection (DI) can help you. Dependency injection can
+      help you at runtime dynamically deciding which implementations to plug
+      into the dependencies.
+    </p>
+    <ul>
+      <li>What is tight coupling and how to prevent it?</li>
+      <li>Using Inversion of Control (IoC) containers.</li>
+      <li>Constructor and Property injection.</li>
+      <li>Microsoft.Extensions.DependencyInjection as an example.</li>
+    </ul> -->
+
+    <h4>Structural patterns</h4>
+    <p>
+      Created objects do not tend to stand on their own. No, they start
+      encapsulating other objects trying to create structure in, what otherwise
+      would be a chaotic software environment. Structural patterns help at
+      identifying and setting up relationships between objects.
+    </p>
+    <ul>
+      <li>
+        Adapter - plugging in different objects into your code that do not fit
+      </li>
+      <li>LAB: Building INotifyPropertyChanged as a generic Adapter</li>
+      <li>
+        Decorator - altering the behavior of an object without the caller
+        realising it
+      </li>
+      <li>LAB: Changing IComparable&lt;T&gt; with a Decorator</li>
+      <li>
+        Composite - tree structures are here to help you, working with Linq
+        Expressions
+      </li>
+      <li>Facade - hiding the complexity of subsystems from the caller</li>
+      <li>
+        Flyweight - reduce memory consumption by preventing unnecessary creation
+        of object
+      </li>
+      <li>
+        Proxy - proxying requests made to the subject without changing the
+        behavior
+      </li>
+    </ul>
+
+    <h4>
+      Building your own little programming language with some patterns - Fun!
+    </h4>
+    <p>
+      Programming languages also use a bunch of patterns in their
+      implementation. In this chapter you will build your own little programming
+      language, which is extensible by the way. While doing so you will discover
+      and apply some very important patterns which are perfectly useable outside
+      of the scope of building programming languages!
+    </p>
+    <ul>
+      <li>
+        Interpreter: Build your own expressive language-grammar and execute it.
+      </li>
+      <li>
+        How LINQ uses Interpreter - and how you can take advantage of it
+        yourself.
+      </li>
+      <li>
+        Builder: Hide how complex hierarchies of objects get built - and allow
+        variations.
+      </li>
+      <li>XAML as the ultimate builder.</li>
+      <li>Reflection: the ideal .NET way for implementing your own builder.</li>
+      <li>How NOT to use reflection.</li>
+      <li>LAB: Building your own calculator with Interpreter and Builder</li>
+      <li>
+        Visitor: When you need a lot of different operations on the same object
+        structure.
+      </li>
+      <li>Building a pretty-printer using Visitor.</li>
+      <li>Implementing Visitor the dynamic way.</li>
+      <li>
+        LAB: Implementing a Visitor to walk over a complex hierarchy of objects
+      </li>
+      <li>Automating tedious code with Source Generators</li>
+    </ul>
+
+    <h4>Model-View-Whatever</h4>
+    <p>
+      Most developers make lousy graphic designers. That is why we see the
+      emergence of patterns that allow developers to focus on writing code to
+      implement the behavior of the application, while allowing graphics
+      designers to build kick-ass user interfaces. The main pattern is called
+      Model-View-*Whatever*, with *Whatever* replaced depending on the
+      technology you are using. Understanding the MVW pattern is important as it
+      is used to develop both windows and web applications.
+    </p>
+    <ul>
+      <li>Model-View-Controller: An ancient pattern back in fashion.</li>
+      <li>ASP.NET MVC - an introduction.</li>
+      <li>
+        MVVM in WPF - MVC taking advantage of powerful databinding capabilities.
+      </li>
+      <li>Command: Encapsulate behavior in objects.</li>
+      <li>Implementing commands using closures.</li>
+      <li>LAB: Using MVVM in a WPF application</li>
+    </ul>
+
+    <h4>Reactive Programming</h4>
+    <p>
+      Have you ever heard of Reactive Programming? This is an important new
+      development where you learn to program using <em>Observables</em>. You
+      will learn to apply this technique to solve some common, hard-to-solve
+      problems with classic Object-Oriented Programming, and we will also
+      explore the Fluxor/Redux pattern.
+    </p>
+    <ul>
+      <li>What are Observables?</li>
+      <li>Using Reactive Extensions.</li>
+      <li>Applying the Redux pattern so simplify complex applications.</li>
+      <li>LAB: Implementing a search system with Observables</li>
+    </ul>
+
+    <h3>Framework building</h3>
+    <h4>Design Patterns Applied: Developing your own reusable library.</h4>
+    <p>
+      When do you need patterns the most?! When you are building a framework
+      yourself. Building a framework means handling new features while keeping
+      backward compatibility. This very hard task can be make easier with the
+      proper use of patterns. So in this last part of the training we will build
+      a reusable library, and while doing so encounter some problems and then
+      solve these problems by applying the right pattern.
+    </p>
+    <ul>
+      <li>Adding the GoF Command pattern to MVVM.</li>
+      <li>Using interfaces for flexibility.</li>
+      <li>Building Command Objects - extending WPF's ICommand interface.</li>
+      <li>Adding Undo and Redo functionality to the command pattern.</li>
+      <li>Using a CommandManager class.</li>
+      <li>
+        Challenge: retro-fitting our commands into MVVM without lots of changes.
+      </li>
+      <li>Implementing Undo-Redo using the Memento pattern.</li>
+      <li>Choosing whether or not to add the Prototype pattern.</li>
+      <li>Ideas on how to proceed with the command pattern.</li>
+      <li>LAB: Implementing Undo/Redo logic as a reusable library</li>
+    </ul>
+  </body>
+</html>

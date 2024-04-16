@@ -1,0 +1,50 @@
+﻿@page "/courses/{pageName}"
+@using System.IO
+@using BlazorChat.Infra
+@using BlazorChat.Models
+@using Microsoft.AspNetCore.Hosting
+
+
+@if (u2uCourse is not null)
+{
+    <div class="bg-white p-8 rounded-lg shadow-lg flex items-center space-x-4">
+        <div class="flex-1">
+            <h1 class="text-4xl font-bold">@u2uCourse.CourseTitle</h1>
+            <p class="text-sm text-gray-500 mt-1">az-700</p>
+        </div>
+        <div class="flex-shrink-0">
+            <div class="flex items-center justify-center h-20 w-20 rounded-full border-4 border-black">
+                <span class="text-xl font-bold">@u2uCourse.NumberOfDays days</span>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto prose lg:prose-xl">        
+        <div>@((MarkupString)u2uCourse.CourseOutline)</div>
+    </div>
+}
+else
+{
+    <p>Loading...</p>
+}
+
+
+@code {
+
+    [Parameter]
+    public string? PageName { get; set; }
+
+    [Inject]
+    public IWebHostEnvironment Environment { get; set; }
+
+    private U2UCourse u2uCourse;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var filePath = Path.Combine(Environment.WebRootPath, $"coursepages/{PageName}");
+        if (File.Exists(filePath))
+        {
+            string htmlContent = await File.ReadAllTextAsync(filePath);
+            u2uCourse = CoursePageInfoExtractor.ExtractCourseInfo(htmlContent);
+        }
+    }
+}

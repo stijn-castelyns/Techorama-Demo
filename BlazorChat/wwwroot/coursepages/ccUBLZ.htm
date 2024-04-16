@@ -1,0 +1,240 @@
+﻿<html
+  xmlns:mso="urn:schemas-microsoft-com:office:office"
+  xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+>
+  <head>
+    <title>Building Single Page Applications with C# and Blazor</title>
+    <meta name="NumberOfDays" content="3" />
+    <!--[if gte mso 9
+      ]><xml>
+        <mso:CustomDocumentProperties>
+          <mso:ContentTypeId msdt:dt="string"
+            >0x0101009C33340F38E14D1EABEAC83093A8F17200CC4EDD6B6BFD0C4EADC836B510B92464</mso:ContentTypeId
+          >
+        </mso:CustomDocumentProperties>
+      </xml><!
+    [endif]-->
+  </head>
+
+  <body>
+    <h2>Learning Goals</h2>
+    <p>
+      Blazor is a new Microsoft Framework for building Single Page Applications.
+      Unlike frameworks like Angular, VueJS, and React, Blazor allows you to do
+      this using C# and use all the skills and tools you have been using with
+      .NET! Attend this training if you want to get a head-start with Blazor.
+    </p>
+    <h2>Target Audience</h2>
+    <p>
+      This training requires basic knowledge about building websites with HTML
+      and CSS, and also some knowledge about C# and ASP.NET.
+    </p>
+    <h2>Course Outline</h2>
+    <h4>Introduction to WebAssembly and Blazor</h4>
+    <p>
+      In this introduction we will look at how browsers are now capable of
+      running .NET assemblies in the Browser using WebAssembly, .NET and Blazor.
+      Getting hands on is the best way to learn. You will create your first
+      Blazor project in Visual Studio, run the project to see it work, and
+      finally inspect the different aspects of the project to get a “lay of the
+      land” view for how Blazor applications are developed.
+    </p>
+    <ul>
+      <li>Building Rich Web Experiences, Past, Present and Future</li>
+      <li>Introducing Web Assembly</li>
+      <li>Web Assembly and .NET</li>
+      <li>Getting Started with Blazor – Easy!</li>
+      <li>
+        Understanding the difference between Blazor WASM and. Blazor Server
+      </li>
+      <li>Blazor Features Overview</li>
+      <li>
+        Generating your project with Visual Studio, dotnet CLI or Visual Studio
+        Code
+      </li>
+      <li>Examining the generated solution and its projects</li>
+      <li>LAB: Getting started with Blazor</li>
+    </ul>
+    <h4>Blazor Data Binding</h4>
+    <p>
+      Modern web applications use the <em>Model-View-ViewModel</em> approach
+      which heavily relies on data binding. Blazor is no exception! We will look
+      at the different ways to do data binding with Blazor.
+    </p>
+    <ul>
+      <li>A Quick Look at Razor</li>
+      <li>One Way Data Binding</li>
+      <li>Event Handling and Data Binding</li>
+      <li>Two Way Data Binding</li>
+      <li>Reporting Changes with StateHasChanged</li>
+      <li>LAB: Building a simple pizza ordering web site with Blazor</li>
+    </ul>
+    <h4>Blazor Forms and Validation</h4>
+    <p>
+      Most applications need users to enter some data. So how do we present this
+      to the user, capture changes made and validate the data?
+    </p>
+    <ul>
+      <li>Working with Forms in Blazor</li>
+      <li>Adding validation to your forms</li>
+      <li>Disabling the "Submit" button when validation detects errors</li>
+      <li>Implementing custom validation in Blazor - Fluent Validation</li>
+      <li>LAB: Adding a form to the PizzaPlace application</li>
+    </ul>
+    <h4>Blazor Components.</h4>
+    <p>
+      In modern web development we build applications by constructing them from
+      components, which typically are again built from smaller components. A
+      Blazor component is a self-contained chunk of user interface with a single
+      responsibility. Blazor Components are classes built from razor and C# and
+      are easier to understand, debug and maintain. And of course, you can
+      re-use the same component in different pages.
+    </p>
+    <ul>
+      <li>What is a Blazor Component?</li>
+      <li>Building a Simple Blazor Component</li>
+      <li>Component Parameters</li>
+      <li>Conditional Rendering and ChildContent</li>
+      <li>Separating the View and View-Model</li>
+      <li>Component Data Binding</li>
+      <li>Attribute Splatting</li>
+      <li>Understanding EventCallback</li>
+      <li>Referring to Components</li>
+      <li>Styling Components</li>
+      <li>
+        LAB: Create components to improve the pizza ordering web site's
+        maintainability
+      </li>
+    </ul>
+    <h4>Understanding Blazor Component Lifecycle Hooks</h4>
+    <p>
+      Blazor Components are born, go through changes and get removed. Here we
+      will look at places where you can intercept some of a component's
+      life-cycle.
+    </p>
+    <ul>
+      <li>Understanding Lifecycle Hooks</li>
+      <li>Limiting unnecessary Rerendering of components with ShouldRender</li>
+      <li>Using Virtualization to limit rendering</li>
+      <li>Help Blazor with change detection using @key</li>
+      <li>LAB: Limit unnecessary rerendering with ShouldRender</li>
+    </ul>
+    <h4>Reusing components with Component Libraries</h4>
+    <p>
+      You can easily distrubute your components as a component libary. This way
+      your components can be used across several Blazor projects. We will also
+      look at developing for both Blazor platforms with the ability to used
+      advanced debugging features.
+    </p>
+    <ul>
+      <li>Building a Component Library</li>
+      <li>Consuming a Component Library</li>
+      <li>Example: Using the QuickGrid Component</li>
+      <li>LAB: Building for both Blazor WebAssembly and Blazor Server</li>
+    </ul>
+    <h4>Services and Dependency Injection.</h4>
+    <p>
+      <em>Dependency Inversion</em> is one of the basic principles of good
+      Object-Oriented design. The big enabler is <em>Dependency Injection</em>.
+      In this chapter we will discuss dependency inversion and injection and why
+      it is a fundamental part of Blazer. We will illustrate this by building a
+      Service that encapsulates where the data gets retrieved and stored.
+    </p>
+    <ul>
+      <li>Understanding Dependency Inversion & Injection</li>
+      <li>Some Inversion of Control Containers</li>
+      <li>Blazor and Dependency Injection</li>
+      <li>Building Blazor Services</li>
+      <li>LAB: Create a service to talk to the data store</li>
+    </ul>
+    <h4>Data Storage and Microservices</h4>
+    <p>
+      In general client-side browser applications need to store some of their
+      data. In some cases, such as game apps, the application can store its data
+      in the browser itself, using browser local storage. But in most cases
+      storage will happen on the server which has access to database engines
+      such as SQL Server. In this chapter we will cover the basics of storing
+      data using Entity Framework Core and exposing that data using REST and
+      microservices built on top of ASP.NET Core. Of course Blazor can also work
+      with REST services built on top of other runtimes.
+    </p>
+    <ul>
+      <li>What is REST?</li>
+      <li>Invoking Server Functionality with REST</li>
+      <li>Building a Simple Microservice with ASP.NET Core</li>
+      <li>What is Entity Framework Core?</li>
+      <li>Generating the Database with Code First</li>
+      <li>Testing your Microservice using Postman</li>
+      <li>LAB: Storing the pizzas and orders in the database with EF Core</li>
+    </ul>
+    <h4>Communication with Microservices</h4>
+    <p>
+      So how do you talk to a REST service with Blazor? We will use the
+      <code>HttpClient</code> class you probably already know from other .NET
+      projects, but with a twist.
+    </p>
+    <ul>
+      <li>Sending and receiving data</li>
+      <li>Using the HttpClient Class and IHttpClientFactory interface</li>
+      <li>The HttpClientJSONExtensions Methods</li>
+      <li>Taking full control with HttpRequestMessage</li>
+      <li>Retrieving Data From the Server</li>
+      <li>Storing Changes</li>
+      <li>LAB: Talk to the server</li>
+    </ul>
+    <h4>Single Page Applications and Routing.</h4>
+    <p>
+      Blazor is a .NET framework you use for building Single Page Applications,
+      just like you can use popular JavaScript frameworks such as Angular, React
+      and VueJs. But what is a Single Page Application (SPA)? We will look at
+      using routing to jump between different sections of a SPA and sending data
+      between different components.
+    </p>
+    <ul>
+      <li>What is a Single Page Application?</li>
+      <li>Using Layout Components</li>
+      <li>Understanding Routing</li>
+      <li>Setting the Route Template</li>
+      <li>Redirecting to Other Pages</li>
+      <li>Sharing State between Components</li>
+      <li>Lazy Loading parts of your Blazor web site</li>
+      <li>Handling location changing events</li>
+      <li>LAB: Add a route to show a pizza's detail</li>
+    </ul>
+    <h4>JavaScript Interoperability</h4>
+    <p>
+      Sometimes there is just no escape from using JavaScript 😊. For example,
+      Blazor itself uses JavaScript to update the browser's Document Object
+      Model (DOM) from your Blazor components. You can too. In this chapter we
+      will look at interoperability with JavaScript and, as an example, we will
+      build a Blazor Component Library to display a geographic map.
+    </p>
+    <ul>
+      <li>Why do we still need JavaScript in Blazor?</li>
+      <li>Calling JavaScript from C#</li>
+      <li>Calling .NET Methods from JavaScript</li>
+      <li>Displaying a map with a JavaScript library</li>
+      <li>LAB: Add a map to show the location of the resto and customer</li>
+    </ul>
+    <h4>Blazor and Globalization</h4>
+    <p>
+      There are no borders on the web, so making your website available with
+      different languages can add a lot of users. Here we will look at
+      globalization with Blazor.
+    </p>
+    <ul>
+      <li>What is internationalization, localization and globalization?</li>
+      <li>Detecting the user's language</li>
+      <li>Internationalizing your Blazor application</li>
+      <li>Localizing your application</li>
+      <li>LAB: Globalization of the PizzaPlace application</li>
+    </ul>
+    <h4>Security</h4>
+    <p>How can we add authentication to a Blazor application?</p>
+    <ul>
+      <li>Adding authentication to a Blazor Server application</li>
+      <li>Adding authentication to a Blazor WASM application</li>
+      <li>LAB: Protecting your Blazor application</li>
+    </ul>
+  </body>
+</html>

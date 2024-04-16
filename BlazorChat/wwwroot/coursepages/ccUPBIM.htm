@@ -1,0 +1,159 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+    <title>Enterprise Power BI</title>
+    <meta name="NumberOfDays" content="3" />
+
+    <!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:ContentTypeId msdt:dt="string">0x0101009C33340F38E14D1EABEAC83093A8F17200E0F538E47512BD4497BF81426143321B</mso:ContentTypeId>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+
+    <!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+    <h2>Learning Goals</h2>
+    <p>
+        Power BI is a suite of business analytics tools to analyze data and share insights. This training shows you how
+        to setup and manage Power BI in an enterprise business environment. It focusses on the challenges that might appear when a large group of
+        people need to develop and access the Power BI infrastructure: How to do versioning? How to check data lineage? How to control the tenant settings?
+        How to setup security? ...
+    </p>
+
+    <h2>Target audience</h2>
+    <p>
+        BI and IT professionals responsible for an enterprise deployment and management of Power BI solutions in
+        the cloud. Participants are expected to have some experience with Power BI Desktop.
+    </p>
+
+    <h2>Course Outline</h2>
+
+    <h4>Configuring Workspaces</h4>
+    <p>
+        Workspaces are places where users collaborate to create datasets, reports, dashboards, data flows, ... 
+        In this module students will learn about securing and managing workspaces in an enterprise Power BI environment. 
+        Topics like how to automate the creation of workspaces, link workspaces to an Azure Data Lake Gen2 storage account, assigning capacity... will be covered in this chapter.
+    </p>
+    <ul>
+        <li>Creating workspaces</li>
+        <li>Set a Workspace OneDrive</li>
+        <li>Shared versus dedicated capacity</li>
+        <li>Workspace connectivity with the XMLA endpoint</li>
+        <li>Configuring Azure Data Lake Gen 2 integration</li>
+        <li>Automating Workspace creation using PowerShell</li>
+        <li>Creating and working with Service principals</li>
+        <li>Power BI Governance</li>
+        <li>LAB: Configuring workspaces</li>
+    </ul>
+
+    <h4>Managing Datasets</h4>
+    <p>
+        Datasets are at the cornerstone of Power BI reporting. This module covers the versioning of datasets using free and open-source tools and
+        how datasets can also be developed using Visual Studio with Analysis Services projects for stricter versioning and source control.
+    </p>
+    <ul>
+        <li>Working with datasets in the Power BI Service</li>
+        <li>Versioning using the open-source ALM Toolkit</li>
+        <li>Versioning and ALM using Visual Studio with Analysis Services projects</li>
+        <li>Working with shared datasets</li>
+        <li>Dataset Lineage</li>
+        <li>Certifying and promoting datasets</li>
+        <li>Automating Dataset deployment using PowerShell</li>
+        <li>LAB: Deploying and versioning datasets</li>
+    </ul>
+
+    <h4>Deploying content using Deployment Pipelines</h4>
+    <p>
+        When Power BI reports and dashboards become essential company resources, you don't want to deploy new or updated workspace content directly in production. 
+        This module describes how use deployment pipeline to deploy workspace content between development, acceptance and production workspaces.
+    </p>
+    <ul>
+        <li>The need for different workspaces</li>
+        <li>Using Deployment Pipelines</li>
+        <li>LAB:  Working with Deployment Pipelines</li>
+    </ul>
+
+    <h4>Configuring workspace security</h4>
+    <p>
+        This module discusses the different workspace security roles and the consequences of these roles when sharing dashboards and reports with other users.
+    </p>
+    <ul>
+        <li>Configuring Workspace security</li>
+        <li>Security when sharing Dashboards and Reports</li>
+        <li>Securing data at rest</li>
+        <li>Securing data in transit</li>
+        <li>LAB: Securing workspaces</li>
+    </ul>
+
+    <h4>Refreshing datasets</h4>
+    <p>
+        Most datasets in the Power BI service contain a copy of the data from the source systems. This means that you must schedule data refreshes so that reports show the latest data. 
+        This module covers the installation and configuration of Data Gateways in Power BI. When you are dealing with large volumes of data, doing a full refresh is not feasible anymore.
+        Incrementally refreshing and partitioning your data are a solution this problem. 
+    </p>
+    <ul>
+        <li>Data Gateways</li>
+        <li>Standard versus Personal mode</li>
+        <li>Import versus DirectQuery versus live connections</li>
+        <li>Configuring Data Refresh Credentials</li>
+        <li>Gateway clusters</li>
+        <li>Monitoring Gateways and data refresh</li>
+        <li>Configuring incremental refresh</li>
+        <li>Incremental refreshes and partitioning</li>
+        <li>Dataset refresh using the XMLA endpoint</li>
+        <li>LAB: Configuring data refreshes</li>
+    </ul>
+
+    <h4>Working with Dataflows</h4>
+    <p>
+        Dataflows bring Power Query to the cloud, allowing for reuse of data preparation logic in multiple datasets or in other Azure technologies.
+        In this module, we will discuss the concept and usage of dataflows and the Common Data Model. You will not only learn how dataflows are created and leveraged in Power BI,  
+        but also how they can be used in other Microsoft Azure technologies like Azure Synapse and Databricks using Spark and the Common Data Model connector.
+    </p>
+    <ul>
+        <li>What are Dataflows?</li>
+        <li>Dataflows, Entities and the Common Data Model (CDM)</li>
+        <li>Dataflows and Azure Data Lake Gen 2 storage</li>
+        <li>Creating Dataflows</li>
+        <li>Working with linked and computed Entities</li>
+        <li>Scheduling refreshes for Dataflows</li>
+        <li>Using Dataflows in Power BI Desktop</li>
+        <li>Consuming and creating dataflows using Azure Synapse, Azure Databricks and Azure ML</li>
+        <li>Dataflow licensing</li>
+        <li>LAB: Working with Dataflows</li>
+    </ul>
+
+    <h4>Administering a Power BI Tenant</h4>
+    <p>
+        To enforce company policies, tenant settings need to be properly configured. Which custom visuals can be used?
+        Can reports and report data be shared with external users, ... In this module you will get an overview of the different Power BI tenant settings you can configure.
+    </p>
+    <ul>
+        <li>Configuring tenant settings</li>
+        <li>Sharing settings</li>
+        <li>Custom visuals settings</li>
+        <li>Managing custom data sources</li>
+        <li>LAB: Configuring a Power BI Tenant</li>
+    </ul>
+
+    <h4>Monitoring Power BI</h4>
+    <p>
+        Monitoring the Power BI environment is crucial to spot performance issues, to estimate capacity. Auditing is also important from a security point of view.
+    </p>
+    <ul>
+        <li>Monitor Power BI via reports</li>
+        <li>Monitoring workspace usage</li>
+        <li>Customizing workspace usage reporting</li>
+        <li>Power BI Premium Capacity Metrics and Alerts</li>
+        <li>Integrated Unified Office 365 Audit Logging</li>
+        <li>LAB: Monitoring Power BI</li>
+    </ul>
+
+</body>
+
+</html>

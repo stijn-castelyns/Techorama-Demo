@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:mso="urn:schemas-microsoft-com:office:office"
+  xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+>
+  <head>
+    <title>Building Web Applications with ASP.NET Core</title>
+    <meta name="NumberOfDays" content="5" />
+
+    <!--[if gte mso 9]>
+      <xml>
+        <mso:CustomDocumentProperties>
+          <mso:ContentTypeId msdt:dt="string"
+            >0x0101009C33340F38E14D1EABEAC83093A8F17200411861A32B1E654BB5952C0802898AEC</mso:ContentTypeId
+          >
+        </mso:CustomDocumentProperties>
+      </xml>
+    <![endif]-->
+
+    <!--[if gte mso 9]>
+      <xml>
+        <mso:CustomDocumentProperties></mso:CustomDocumentProperties>
+      </xml>
+    <![endif]-->
+
+    <!--[if gte mso 9]>
+      <xml>
+        <mso:CustomDocumentProperties></mso:CustomDocumentProperties>
+      </xml>
+    <![endif]-->
+
+    <!--[if gte mso 9]>
+      <xml>
+        <mso:CustomDocumentProperties></mso:CustomDocumentProperties>
+      </xml>
+    <![endif]-->
+  </head>
+
+  <body>
+    <h2>Learning Goals</h2>
+    <p>
+      This course will teach you how to build Web applications using the ASP.NET Core MVC (model-view-controller)
+      framework and patterns in .NET 6/7. This includes interacting with a database using Entity Framework Core; and
+      creating and consuming RESTful services with ASP.NET Core Web API and JavaScript.
+    </p>
+    <h2>Target Audience</h2>
+    <p>
+      Students should have a good knowledge of C#. Furthermore, a basic knowledge of HTML is advised. This course is
+      intended for .NET 6/7 with C#.
+    </p>
+    <h2>Course Outline</h2>
+
+    <h4>The HTTP Protocol</h4>
+    <p>
+      You can't start developing for the web without knowing the fundamentals of HTTP. In this module, we explore the
+      details and intricacies of the protocol that makes client-server communication possible on the web.
+    </p>
+    <ul>
+      <li>Http Methods</li>
+      <li>Headers</li>
+      <li>Status Codes</li>
+      <li>Redirection</li>
+      <li>Caching</li>
+    </ul>
+
+    <h4>ASP.NET Core MVC: Introduction</h4>
+    <p>
+      In this module You will learn about the MVC pattern and why this pattern fits so well in the world of websites and
+      web applicatons.
+    </p>
+    <ul>
+      <li>The Model-View-Controller (MVC) pattern</li>
+      <li>MVC in ASP.NET Core</li>
+      <li>Client-centric versus Server-centric applications</li>
+    </ul>
+
+    <h4>The 3 Main ASP.NET Core MVC Components</h4>
+    <p>
+      Once you understand MVC, you need to learn how it is implemented in ASP.NET Core. This module explores the most
+      important components of the framework and how they work together.
+    </p>
+    <ul>
+      <li>Handling the user interaction with Controller</li>
+      <li>Rendering the response with MVC views</li>
+      <li>Creating a MVC Model and ViewModel</li>
+      <li>Understanding Routing</li>
+      <li>LAB: The 3 main ASP.NET Core MVC Components</li>
+    </ul>
+
+    <h4>Introduction to Entity Framework Core</h4>
+    <p>
+      When a database is designed, the idea is to normalize data, i.e. avoid duplicate data. When designing the object
+      model for an application you try to come up with a design which is best suited for solving your business problems.
+      This means that mapping tables to classes one-on-one is often a bad idea. Entity Framework Core allows us to map
+      the relational world to the world of objects, allowing more complex mapping.
+    </p>
+    <ul>
+      <li>What is Entity Framework Core?</li>
+      <li>The need for Object Relational Mapping, especially with inheritance</li>
+      <li>Decoupling conceptual data structure from logical data structure</li>
+      <li>Querying data: APIs and LINQ</li>
+    </ul>
+
+    <h4>Modeling your database with EF Core</h4>
+    <p>
+      Mapping in EF Core uses conventions, attributes, or Fluent API. In this module, you will learn how to use these to
+      model your database in EF Core and apply updates in your model to your database with Code-first Migrations.
+    </p>
+    <ul>
+      <li>Methods of configuration</li>
+      <li>Creating and applying migrations</li>
+      <li>Table and column mapping</li>
+      <li>Modeling properties</li>
+      <li>Mapping Value generated properties</li>
+      <li>Handling Concurrent updates</li>
+      <li>Modeling relationships</li>
+      <li>Mapping inheritance</li>
+      <li>LAB: Mapping your entities to the database with EF Core</li>
+    </ul>
+
+    <h4>ViewModels</h4>
+    <p>
+      This module will teach you about ViewModels, an abstraction created to help maintain a clean separation between
+      the Model and Views.
+    </p>
+    <ul>
+      <li>Passing Data to a View</li>
+      <li>ViewModels</li>
+      <li>Mapping between Model and ViewModel</li>
+      <li>LAB: Using ViewModels</li>
+    </ul>
+
+    <h4>ASP.NET Core Pipeline</h4>
+    <p>
+      ASP.NET Core easily outperforms all other web hosting solutions. A lot of this performance comes from the highly
+      efficient request processing pipeline. Here we will look at how that pipeline works, and how to make it do your
+      bidding.
+    </p>
+    <ul>
+      <li>The principle of the ASP.NET Core Pipeline</li>
+      <li>Building the Pipeline using Middleware</li>
+      <li>Understanding Dependency Injection</li>
+    </ul>
+
+    <h4>End-point Routing</h4>
+    <p>
+      On the web the URL decides what the server will do. In ASP.NET Core, this is configured in the End-point Routing
+      Middleware. A solid understanding of this middleware will allow you to build complex, feature-rich applications
+      with ASP.NET Core.
+    </p>
+    <ul>
+      <li>Getting Started with Routing Concepts</li>
+      <li>Defining Routing Templates</li>
+      <li>Route Parameter Constraints</li>
+      <li>Route Parameter Transformers</li>
+      <li>Understanding Route Matching</li>
+      <li>Using Conventional vs. Attribute Routing</li>
+      <li>Routing Attributes</li>
+      <li>Handling Routing Errors</li>
+      <li>LAB: Routing in ASP.NET Core MVC</li>
+    </ul>
+
+    <h4>ASP.NET Core MVC Controllers</h4>
+    <p>
+      In this module we'll take a closer look at the C in MVC. The controller has a very important role to fulfill: It's
+      the component that ties models, views and business logic together when handling a request.
+    </p>
+    <ul>
+      <li>Model Binding</li>
+      <li>Different types of Action Results</li>
+      <li>Working with GET and POST</li>
+      <li>Action Filters</li>
+      <li>Redirections</li>
+      <li>LAB: using MVC Controllers</li>
+    </ul>
+
+    <h4>Responsive Web Design with Bootstrap</h4>
+    <p>
+      Your web site needs to look stunning on any device; whether it's a laptop, tablet or phone. Let bootstrap be your
+      guide towards a consistent looking application in the messy world of media queries and responsive design.
+    </p>
+    <ul>
+      <li>Normalizing and Resetting</li>
+      <li>The Grid System</li>
+      <li>Utility classes</li>
+      <li>Bootstrap Components</li>
+      <li>Customizing Bootstrap</li>
+    </ul>
+
+    <h4>JavaScript Language Fundamentals</h4>
+    <p>
+      In this module, we will talk about the very basics of JavaScript. JavaScript can be a very tricky language, so we
+      will try to explain a couple of its quirks as well. This way, we can avoid surprises when making our applications
+      more interactive.
+    </p>
+    <ul>
+      <li>Variables</li>
+      <li>Primitives and Objects</li>
+      <li>Functions and Scope</li>
+      <li>Error Handling</li>
+      <li>LAB: Language Fundamentals</li>
+    </ul>
+
+    <h4>Razor Views</h4>
+    <p>
+      In this module we will explore Razor and its syntax. we start with the basics, and end with some more advanced
+      scenarios.
+    </p>
+    <ul>
+      <li>Views and View Engines</li>
+      <li>Layout and Sections</li>
+      <li>HTML and Tag Helpers</li>
+      <li>Partial Views</li>
+      <li>LAB: Sections and HTML Helpers</li>
+    </ul>
+
+    <h4>Data Validation</h4>
+    <p>
+      Validating user input is important for two reasons: firstly, you don't want to allow invalid or even dangerous
+      content to be persisted in your database. Secondly, when your users make mistakes, you want to help them correct
+      those mistakes. In this module we look at best practices, validation options, and how to send feedback in case of
+      errors.
+    </p>
+    <ul>
+      <li>Explicit versus Implicit Validation</li>
+      <li>Validating data using Data Annotations</li>
+      <li>Self-Validating Models</li>
+      <li>Validating using the Model Binder</li>
+      <li>Client-side validation with Unobtrusive JavaScript</li>
+      <li>LAB: Data Validation</li>
+    </ul>
+
+    <h4>ASP.NET Core MVC Dependency Injection &amp; Testing</h4>
+    <p>
+      Dependency Injection is the art of decoupling an object from its dependencies. On top of improving maintainability
+      and separation of concerns, it also makes testing a lot easier. In this module you will use dependency injection
+      to create your first unit tests.
+    </p>
+    <ul>
+      <li>Methods of Dependency Injection</li>
+      <li>Dependency Inversion, Explicit Dependencies, and Inversion of Control</li>
+      <li>Unit Testing your Components</li>
+      <li>Stubbing, Mocking &amp; Faking</li>
+      <li>LAB: Dependency Injection in MVC</li>
+    </ul>
+
+    <h4>Building RESTful Services with Web API</h4>
+    <p>
+      When building more client-centric applications, you will have to send a bunch of data back and forth between your
+      client and server. Web API uses REST to allow the client to access resources on the server. It is based on the
+      same principles as MVC.
+    </p>
+    <ul>
+      <li>What is REST?</li>
+      <li>Building a REST service with ASP.NET Core Web API</li>
+      <li>Supporting multiple representations: XML and JSON</li>
+      <li>LAB: Building a REST API</li>
+    </ul>
+
+    <h4>Consuming Web APIs</h4>
+    <p>
+      After you've built your back-end with Web API, it's time to jump over the fence and take a look at how client
+      applications will consume it. In this module you will learn how .NET applications, as well as JavaScript
+      applications can easily consume your Web API.
+    </p>
+    <ul>
+      <li>Consuming a Web API from .NET</li>
+      <li>Best Practices for the .NET HttpClient</li>
+      <li>Using the Swagger CodeGen Client</li>
+      <li>Consuming a Web API from JavaScript with Fetch</li>
+      <li>Web APIs and JavaScript Frameworks</li>
+      <li>LAB: Building a Client for your Web API</li>
+    </ul>
+
+    <h4>Authentication</h4>
+    <p>
+      Authentication is about identifying who the user of the system is. In this chapter we look at the different
+      authentication mechanisms, their use-cases, and how to implement them.
+    </p>
+    <ul>
+      <li>Knock Knock... Who's There?</li>
+      <li>Windows Integrated</li>
+      <li>Username and Password</li>
+      <li>Extending Authentication with your own Data</li>
+      <li>Using the Microsoft Identity Platform</li>
+      <li>Authorization with Policies</li>
+    </ul>
+  </body>
+</html>

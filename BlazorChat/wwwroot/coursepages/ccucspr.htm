@@ -1,0 +1,201 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+    <title>Object Oriented Programming in C#</title>
+    <meta name="NumberOfDays" content="5" />
+    <!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:ContentTypeId msdt:dt="string">0x0101009C33340F38E14D1EABEAC83093A8F17200C37C50846EC0634ABF54D3457B0CE35F</mso:ContentTypeId>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+    <h2>Learning Goals</h2>
+    <p>
+        This course teaches you how to start programming with Visual Studio, C# and .NET. You will get familiar with the C# language syntax and the .NET Object-Oriented concepts, such as classes, objects, inheritance, polymorphism, ... In this course, you&#39;ll get a taste of the different types of applications and .NET libraries through examples in WPF, Entity Framework Core and ASP.NET Core.
+    </p>
+
+    <h2>Target Audience</h2>
+    <p>
+        This training targets developers with no or limited C# experience. A basic understanding of programming - in whatever language
+        - is advised. Once you've finished this training, you can start your journey to learn building things like web applications, desktop or mobile apps,
+        backends, games, IoT, bots, etc. All with C#.
+    </p>
+
+    <h2>Course Outline</h2>
+    
+    <h4>Overview of .NET 6/7</h4>
+    <p>
+        .NET is designed to be used for developing multiple types of applications. You'll get an overview of the applications you can build. You will also be introduced to the different flavors contained within
+        .NET Framework and .NET 6/7.
+    </p>
+    <ul>
+        <li>What is a .NET Application?</li>
+        <li>.NET Framework versus .NET 6/7</li>
+        <li>.NET Applications: ASP.NET Core, Web API, WPF, Blazor, MAUI, ... </li>
+    </ul>
+
+    <h4>The .NET Application</h4>
+    <p>When building applications in .NET, it needs to follow a couple of rules. We'll look at the structure of an application
+        and which parts are necessary during runtime.</p>
+    <ul>
+        <li>The Visual Studio Solution and Project</li>
+        <li>What are Namespaces and Assemblies</li>
+    </ul>
+
+    <h4>Classes and Objects</h4>
+    <p>One of the most basic parts of Object-Oriented (OO) programming is designing a blueprint (called class) and during runtime
+        creating an object out of that. In this module, we will talk about the real fundamentals of .NET programming. We create
+        variables to store numbers, text and complex objects and try to use operators on them. We'll explore the ways in
+        which you create a class, and add state and behavior to objects.</p>
+    <ul>
+        <li>What is a Class?</li>
+        <li>Fields, Methods and Properties</li>
+        <li>Namespaces</li>
+        <li>LAB: Work with Classes, Class Members and Instances</li>
+    </ul>
+
+    <h4>Instance Constructors</h4>
+    <p>Whenever you instantiate an object from a class, it needs to be constructed. This module will discuss how .NET handles
+        this.</p>
+    <ul>
+        <li>Instance Constructors</li>
+        <li>Constructor Initializers</li>
+        <li>Overloading Constructors</li>
+        <li>LAB: Work with Constructors and Object Initializers</li>
+    </ul>
+
+    <h4>Types in .NET</h4>
+    <p>Whether you're trying to store numbers, text or objects, you need to put them into variables. These variables will inevitably
+        end up somewhere in memory. By knowing where in memory each type of variable gets stored, we can predict what will
+        happen to them.</p>
+    <ul>
+        <li>Type Categories in .NET</li>
+        <li>Value Types, Reference Types and Immutable Reference Types</li>
+        <li>Custom Value Types: Structure and Enumeration</li>
+        <li>Boxing and Unboxing</li>
+        <li>Type Inference</li>
+        <li>Arguments of Functions. Pass by Value, by Reference. Passing Output</li>
+        <li>LAB: Enums, Pass by Reference, Structs and StringBuilder</li>
+    </ul>
+
+    <h4>Static Members and Static Classes</h4>
+    <p>From time to time, you need some functionality that is not part of one object, but instead part of a complete class. This
+        allows you to use methods without creating an object, or storing data that is reachable for every object. In .NET
+        we call this static members and classes.</p>
+    <ul>
+        <li>Static Members</li>
+        <li>Static Constructors</li>
+        <li>Static Classes</li>
+        <li>Extension Methods</li>
+        <li>LAB: Car Factory</li>
+    </ul>
+
+    <h4>Inheritance</h4>
+    <p>A very important aspect of OO programming is being able to inherit functionality from a basic concept. We'll explore
+        how we can use Inheritance to extend a class and add functionality to it. To help you a bit with a practical example we'll create an ASP.NET Core MVC application to illustrate Inheritance.</p>
+    <ul>
+        <li>General Principle of Inheritance</li>
+        <li>Access Modifiers: Public, Private, Protected, File and Internal</li>
+        <li>LAB: Creating a Web Shop in ASP.NET Core</li>
+    </ul>
+
+    <h4>Polymorphism</h4>
+    <p>On top of Inheritance in OO programming comes this marvel called polymorphism. It allows us to add a different implementation
+        for specific types, based on a generic definition of a function. With polymorphism this is an easy feat to accomplish.</p>
+    <ul>
+        <li>Inheritance &amp; Polymorphism</li>
+        <li>Overriding Methods &amp; Properties</li>
+        <li>Using the Base Class</li>
+        <li>Sealed Classes, Methods and Properties</li>
+        <li>The Object Class</li>
+        <li>Overriding the ToString, Equals and GetHashCode Method</li>
+        <li>LAB: Adding Polymorphism to an Employee Class</li>
+    </ul>
+
+    <h4>Abstract classes and Interfaces</h4>
+    <p>Both concepts are incredibly important in .NET. We'll have a look at how to implement this with an ASP.NET Core MVC application.</p>
+    <ul>
+        <li>Abstract Classes</li>
+        <li>Defining Interfaces</li>
+        <li>Implementing Interfaces</li>
+        <li>Interface Examples in .NET</li>
+        <li>LAB: Implementing IComparable and Controlling Devices</li>
+    </ul>
+
+    <h4>Collections</h4>
+    <p>Storing elements in a collection is crucial in programming languages. This chapter talks about one of the most basic collections in .NET.</p>
+    <ul>
+        <li>Arrays in .NET</li>
+        <li>Multidimensional Arrays</li>
+        <li>Indexer Properties</li>
+        <li>The for, foreach and while Loops</li>
+    </ul>
+
+    <h4>Generics</h4>
+    <p>In C#, you can consider two separate mechanisms when writing reusable code across different types: inheritance and generics.
+        Where inheritance provides reusability with the concept of base types, generics express reusability by providing
+        a template that contains type placeholders. Generics, in comparison to inheritance, can increase type safety and
+        reduce the need for casting and boxing within your applications. This module will illustrate how and when to use
+        generics in your .NET applications. We'll use a WPF application to illustrate Generics.</p>
+    <ul>
+        <li>How to use Generics</li>
+        <li>Creating your own Generics</li>
+        <li>Generic Constraints</li>
+        <li>LAB: Sports Team or Movietheek</li>
+    </ul>
+
+    <h4>Exception Handling</h4>
+    <p>Whenever something unexpected happens, like the network going down, we want our programs to handle this behavior in a
+        user-friendly way. With Exceptions we can react fittingly when these problems occur.</p>
+    <ul>
+        <li>Exceptions in .NET</li>
+        <li>The try-catch-when-finally Keywords</li>
+        <li>Creating Custom Exceptions</li>
+    </ul>
+
+    <h4>Delegates and Events</h4>
+    <p>One of the more challenging aspects of .NET programming is to be able to store functions in a variable. That is exactly
+        what delegates allow us to do. This concept is used with a lot of .NET concepts, like asynchronous programming,
+        event handling, LINQ, .... Events are based on delegates, allowing your application to react to something happening,
+        like a button click.</p>
+    <ul>
+        <li>Creating Delegates</li>
+        <li>Using Delegates</li>
+        <li>Multicast Delegates</li>
+        <li>Creating Events</li>
+        <li>Using Events in a UI</li>
+        <li>Anonymous Methods and Lambda Expressions</li>
+        <li>LAB: Calculator or Music Store</li>
+    </ul>
+
+    <h4>The Async and Await Syntax Explained</h4>
+    <p>
+      The async and await keywords are amongst the most commonly used language constructs in .NET. But surprisingly few people know how it actually works.
+    </p>
+    <ul>
+      <li>What is Asynchronous Programming?</li>
+      <li>Comparing async/await to other Asynchronous Constructs</li>
+      <li>Diving into the Keywords</li>
+      <li>Async Guidelines</li>
+      <li>LAB: using Async and Await</li>
+    </ul>
+
+    <h4>LINQ Query Syntax</h4>
+    <p>LINQ allows to use query-expressions that are very akin to SQL queries, but that can be applied to multiple types of data. 
+        This makes certain operations like filtering and sorting data very easy.
+    </p>
+    <ul>
+        <li>Anonymous Types</li>
+        <li>Using LINQ with IEnumerable</li>
+        <li>Func Delegates</li>
+        <li>Query Operations from, where, order, group and select</li>
+        <li>Using LINQ with IQueryable</li>
+        <li>Accessing a Database using Entity Framework Core</li>
+        <li>LAB: Creating a Shop in WPF</li>
+    </ul>
+
+</body>
+
+</html>

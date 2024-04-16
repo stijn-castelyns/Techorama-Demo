@@ -1,0 +1,272 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+  <title>Advanced Programming Techniques with Visual Studio and .NET</title>
+  <meta name="NumberOfDays" content="5" />
+
+  <!--[if gte mso 9]><xml>
+  <mso:CustomDocumentProperties>
+  <mso:ContentTypeId msdt:dt="string">0x0101009C33340F38E14D1EABEAC83093A8F17200DA8DAD11A14AC34892AB879D349C469B</mso:ContentTypeId>
+  </mso:CustomDocumentProperties>
+  </xml><![endif]-->
+</head>
+
+<body>
+  <h2>Learning Goals</h2>
+  <p>
+    Today's applications have to be more responsive, scalable and high performing. 
+    Therefore, modern .NET developers have to be familiar with the more advanced features of .NET and know how things work under the hood. 
+    This course examines advanced concepts of the framework like async programming,
+    parallel computing and Reactive Extensions. You'll explore the latest C# language features like 
+    Nullable Reference Types and Asynchronous Streams. 
+    Join the training and improve your existing .NET programming skills.
+  </p>
+
+  <h2>Target Audience</h2>
+  <p>
+    This in-depth course is meant for experienced developers who have an understanding of the .NET platform and
+    have built .NET applications using either C# or VB.NET.
+  </p>
+
+  <h2>Course Outline</h2>
+
+  <h4>Generics</h4>
+  <p>
+    Generics is a concept so ingrained into .NET that we can't do without it. 
+    In this module we'll explain the simple and more advanced things of Generics.
+  </p>
+  <ul>
+    <li>Using Generics</li>
+    <li>Creating Generics</li>
+    <li>Constraints</li>
+    <li>Understanding Covariance and Contravariance</li>
+    <li>LAB: Building a Generic Graph</li>
+  </ul>
+
+  <h4>Delegates and Events</h4>
+  <p>
+    Storing functions in variables is exactly what delegates allow us to do. 
+    This concept is used in a lot of locations, especially when using asynchronous programming. 
+    Events are based on delegates, so whenever something interesting happens
+    in a UI (e.g., mouse click) and we want to react on it, we need delegates to handle it correctly.
+  </p>
+  <ul>
+    <li>Creating Delegates</li>
+    <li>Using Delegates</li>
+    <li>Multicast Delegates</li>
+    <li>Creating Events</li>
+    <li>Using Events in a UI</li>
+    <li>Closures</li>
+    <li>LAB: Applying Top-down Actions on a Hierarchy</li>
+  </ul>
+
+  <h4>LINQ Fundamentals</h4>
+  <p>
+    LINQ allows to write queries that are very familiar to SQL queries. This makes certain operations like filtering and sorting
+    data very easy. This concept is used in a lot of locations, whether it is to connect to SQL databases of reading data
+    from Active Directory.
+  </p>
+  <ul>
+    <li>What is LINQ?</li>
+    <li>LINQ to Objects, SQL, Entity Framework and XML</li>
+    <li>LINQ's Enumerable Class</li>
+    <li>Query Syntax vs. Method Syntax</li>
+    <li>Deferred Query Evaluation with Yield Return</li>
+    <li>LINQ Operators</li>
+    <li>LINQ Internals</li>
+    <li>Extending LINQ with your own Operators</li>
+    <li>LAB: Exploring LINQ Features</li>
+  </ul>
+  
+  <h4>Modern C# Language Features</h4>
+  <p>
+    The C# language itself has evolved dramatically over the last couple of years. If you have been struggling to keep up with all the details of these language features, this module is for you.
+  </p>
+  <ul>
+    <li>Nullable Reference Types</li>
+    <li>Value Tuples</li>
+    <li>Pattern Matching</li>
+    <li>Global and Implicit Usings</li>
+    <li>Required and Init-Only Properties</li>
+    <li>Records</li>
+    <li>File-Scoped Types and Namespaces</li>
+    <li>LAB: Using ValueTuples with LINQ</li>
+  </ul>
+
+  <h4>Garbage Collection</h4>
+  <p>
+    When you create an object in .NET, the framework takes care of memory management for you. But what actually happens with objects
+    when .NET decides to remove them from memory? That's what Garbage Collection is all about and we'll have a look at why
+    it is important to understand it correctly.
+  </p>
+  <ul>
+    <li>The Lifecycle of a Class Instance</li>
+    <li>GC Class and Members</li>
+    <li>Forcing a Garbage Collection</li>
+    <li>Garbage Collection for Unmanaged Resources</li>
+    <li>The Dispose Pattern</li>
+    <li>Resurrection</li>
+    <li>Weak References</li>
+  </ul>
+
+  <h4>Reference Semantics with Value Types</h4>
+  <p>Writing super-efficient code requires some special language features.</p>
+  <ul>
+    <li>Understanding Reference Semantics</li>
+    <li>How Value Types allow you to write faster code</li>
+    <li>Passing value types by reference with new access modifiers</li>
+    <li>Understanding Span&lt;T&gt; and related classes</li>
+    <li>Measuring using BenchmarkDotNet</li>
+    <li>LAB: Boosting Performance by using Reference Semantics</li>
+  </ul>
+
+  <h4>Concurrency</h4>
+  <p>
+    How does your machine run multiple processes? How does one process do multiple things at the same time?
+    In this module, we'll discuss the advantages and problems you will encounter when using concurrency.
+  </p>
+  <ul>
+    <li>What is Concurrency?</li>
+    <li>Understanding Processes and Threads</li>
+    <li>Different Kinds of Concurrency</li>
+    <li>Scheduling Threads</li>
+  </ul>
+
+  <h4>Multithreading in .NET</h4>
+  <p>
+    Everyone starts by learning the fundamentals. The Thread class is the most basic implementation for creating concurrency.
+    It is important to have an understanding of this class so you can understand and appreciate the libraries that came afterwards.
+  </p>
+  <ul>
+    <li>The Thread Class</li>
+    <li>Exceptions and Threads</li>
+    <li>Understanding Thread Pooling</li>
+    <li>Debugging Multi-Threaded Code</li>
+  </ul>
+
+  <h4>Thread Synchronization</h4>
+  <p>
+    Using variables in a multi-threaded environment can be dangerous and confusing. In this module we'll explain what
+    can go wrong and how to avoid it.
+  </p>
+  <ul>
+    <li>Race Conditions and Dead Locks</li>
+    <li>Avoiding Race Conditions</li>
+    <li>Synchronizing Threads: Locks, Monitors, Signals, ...</li>
+    <li>Synchronization Guidelines</li>
+    <li>Thread Safety in .NET</li>
+    <li>LAB: Horse Race</li>
+  </ul>
+
+  <h4>Tasks</h4>
+  <p>
+    Using threads directly is quite complicated, instead we can make use of tasks to do our bidding.
+    There are again advantages and disadvantages to using this library and we'll explore them in this module.
+  </p>
+  <ul>
+    <li>What are Tasks?</li>
+    <li>Waiting Asynchronously</li>
+    <li>Dealing with Exceptions</li>
+    <li>Task Cancellation</li>
+  </ul>
+
+  <h4>The Async and Await Syntax Explained</h4>
+  <p>
+    The async and await keywords are amongst the most commonly used language constructs in .NET. But surprisingly few people know how it actually works.
+  </p>
+  <ul>
+    <li>What is Asynchronous Programming?</li>
+    <li>Comparing async/await to other Asynchronous Constructs</li>
+    <li>Diving into the Keywords</li>
+    <li>Async Guidelines</li>
+    <li>Understanding ValueTask</li>
+    <li>LAB: using Async and Await</li>
+  </ul>
+
+  <h4>Asynchronous Programming in .NET</h4>
+  <p>
+    Once you understand the async and await keywords, you can start worrying about all the other fluff like exception handling, 
+    cancellation and reporting progress of an async task. This is the subject of this module.
+  </p>
+  <ul>
+    <li>A History of Asynchronous Programming in .NET</li>
+    <li>Understanding SynchronizationContext</li>
+    <li>Cancellation, Progress and Exception Handling</li>
+    <li>ConfigureAwait</li>
+    <li>IAsyncEnumerable</li>
+    <li>Async Guidelines</li>
+    <li>LAB: Async and Await in a Library</li>
+  </ul>
+
+  <h4>Parallel Computing</h4>
+  <p>
+    In a multi-core environment, being able to split data so every core is working on something is incredibly useful. This
+    module explores a library created to do just that.
+  </p>
+  <ul>
+    <li>What is Parallel Programming?</li>
+    <li>Writing Parallel Loops</li>
+    <li>Concurrent Collections</li>
+    <li>Parallel LINQ </li>
+    <li>LAB: Parallel Calculations, Parallel API calls</li>
+  </ul>
+
+  <h4>Reactive Extensions</h4>
+  <p>
+    Reactive Extensions, a feature a bit complex to understand, but very powerful and hard to get back from. It is sometimes
+    called LINQ to events, because we think of asynchronous operations or events as a stream of data. An observable collection
+    that will, from time to time, have a new interesting event pop up that we can react to.
+  </p>
+  <ul>
+    <li>Push vs. Pull</li>
+    <li>Understanding IObservable&lt;T&gt; and IObserver&lt;T&gt;</li>
+    <li>Hot and Cold Observables</li>
+    <li>Using LINQ with Rx</li>
+    <li>Building your own Rx Extensions</li>
+    <li>LAB: Search Spotify</li>
+  </ul>
+
+  <h4>Attributes and Reflection</h4>
+  <p>
+    In this module we'll talk about using attributes to add metadata to almost everything in .NET. Metadata is of course only
+    useful if we can actually interpret it and that's where reflection comes into play. Reflection is a powerful feature
+    used in a lot of libraries and applications.
+  </p>
+  <ul>
+    <li>What are Attributes?</li>
+    <li>Applying Attributes</li>
+    <li>Common Predefined Attributes</li>
+    <li>Building Custom Attributes</li>
+    <li>What is Reflection?</li>
+    <li>Retrieving Attribute Values</li>
+    <li>Using Source Generators</li>
+    <li>LAB: Task Scheduler</li>
+  </ul>
+
+  <h4>Expressions and Static Reflection</h4>
+  <p>
+    Making use of Expressions to dynamically create code that can be run when we want to, is very powerful. It is a feature
+    used by LINQ for example to translate queries for a database or other system.
+  </p>
+  <ul>
+    <li>What are Expressions?</li>
+    <li>How does LINQ to Database work?</li>
+    <li>Using Static Reflection</li>
+    <li>Dynamically Generating Code with Expressions</li>
+  </ul>
+
+  <h4>Using the Dynamic Language Runtime</h4>
+  <p>
+    .NET is a statically typed language, or is it? Microsoft has introduced a keyword allowing
+    us to use dynamically typed variables. In this module, we'll explain the use cases for it and how powerful it actually
+    is.
+  </p>
+  <ul>
+    <li>Understanding the Dynamic Keyword</li>
+    <li>Talking to JavaScript Objects using the Dynamic Keyword</li>
+    <li>Building your own Dynamic Types</li>
+    <li>LAB: A Dynamic CSV Reader</li>
+  </ul>
+
+</body>
+</html>

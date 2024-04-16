@@ -1,0 +1,31 @@
+﻿@using BlazorChat.Extensions
+@using Markdig
+@inject IWebHostEnvironment Environment
+
+@if (!string.IsNullOrEmpty(renderedMarkdown))
+{
+    <div class="markdown-content" @attributes="AdditionalAttributes">
+        @((MarkupString)renderedMarkdown)
+    </div>
+}
+else
+{
+    <p>No content to display.</p>
+}
+
+@code {
+    [Parameter]
+    public string Markdown { get; set; }
+
+    [Parameter]
+    public Dictionary<string, object> AdditionalAttributes { get; set; }
+
+    private string renderedMarkdown;
+
+    protected override void OnParametersSet()
+    {
+        renderedMarkdown = Markdown != null ? Markdown.ToHtml() : string.Empty;
+    }
+}
+
+

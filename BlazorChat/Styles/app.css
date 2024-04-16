@@ -1,0 +1,20 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.markdown-content h1 {
+    @apply text-3xl font-bold;
+}
+
+.markdown-content a {
+    @apply text-blue-800 hover:text-blue-600;
+}
+
+/*.markdown-content code {
+    @apply bg-gray-100 text-gray-800 font-mono text-sm p-2 rounded-lg border border-gray-200;
+}*/
+
+.markdown-content pre {
+    @apply bg-gray-100 text-gray-800 font-mono text-sm p-4 rounded-lg border border-gray-200 overflow-x-scroll;
+}

@@ -1,4 +1,4 @@
-﻿using BlazorChat.Models;
+﻿using BlazorChat.ViewModels;
 using HtmlAgilityPack;
 using System.Text;
 
@@ -6,12 +6,12 @@ namespace BlazorChat.Infra;
 
 public static class CoursePageInfoExtractor
 {
-  public static U2UCourse ExtractCourseInfo(string htmlContent)
+  public static U2UCourseHtml ExtractCourseInfo(string htmlContent)
   {
     var doc = new HtmlDocument();
     doc.LoadHtml(htmlContent);
 
-    var course = new U2UCourse();
+    var course = new U2UCourseHtml();
 
     // Extracting the title
     var titleNode = doc.DocumentNode.SelectSingleNode("//head/title");

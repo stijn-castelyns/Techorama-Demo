@@ -1,0 +1,32 @@
+﻿@page "/admin/courses"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject BlazorChat.Infra.CourseDbContext DB
+@using BlazorChat.Models
+
+<PageTitle>Index</PageTitle>
+
+<h1 class="text-4xl font-extrabold text-gray-900 tracking-tight mt-4 mb-6 text-center sm:text-5xl md:text-6xl">
+    Course Overview
+</h1>
+
+<p>
+    <a class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="admin/courses/create">Create New</a>
+</p>
+
+<QuickGrid Class="min-w-full divide-y divide-gray-200" Items="DB.Courses">
+    <PropertyColumn Property="course => course.CourseTitle" Class="px-6 py-4 text-sm font-medium text-gray-900" />
+    <PropertyColumn Property="course => course.NumberOfDays" Title="Days" Class="px-6 py-4 whitespace-nowrap text-sm text-gray-500" />
+    <PropertyColumn Property="course => course.HtmlFileName" Class="px-6 py-4 text-sm text-gray-500" />
+    <PropertyColumn Property="course => course.LearningGoals" Class="px-6 py-4 text-sm text-gray-500" />
+    <PropertyColumn Property="course => course.TargetAudience" Class="px-6 py-4 text-sm text-gray-500" />
+    <PropertyColumn Property="course => course.RecommendationInfo" Class="px-6 py-4 text-sm text-gray-500" />
+
+    <TemplateColumn Context="course" Class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+        <a href="@($"admin/courses/edit?coursetitleslug={course.CourseTitleSlug}")" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+        <span class="text-gray-300 mx-1">|</span>
+        <a href="@($"admin/courses/details?coursetitleslug={course.CourseTitleSlug}")" class="text-indigo-600 hover:text-indigo-900">Details</a>
+        <span class="text-gray-300 mx-1">|</span>
+        <a href="@($"admin/courses/delete?coursetitleslug={course.CourseTitleSlug}")" class="text-indigo-600 hover:text-indigo-900">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+

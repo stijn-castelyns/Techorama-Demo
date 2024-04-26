@@ -1,0 +1,69 @@
+﻿@page "/admin/courses/delete"
+@inject BlazorChat.Infra.CourseDbContext DB
+@using BlazorChat.Models
+@inject NavigationManager NavigationManager
+@using Microsoft.EntityFrameworkCore
+
+<PageTitle>Delete</PageTitle>
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Course</h4>
+    <hr />
+    @if (course is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">CourseTitle</dt>
+            <dd class="col-sm-10">@course.CourseTitle</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">NumberOfDays</dt>
+            <dd class="col-sm-10">@course.NumberOfDays</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">LearningGoals</dt>
+            <dd class="col-sm-10">@course.LearningGoals</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">TargetAudience</dt>
+            <dd class="col-sm-10">@course.TargetAudience</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">RecommendationInfo</dt>
+            <dd class="col-sm-10">@course.RecommendationInfo</dd>
+        </dl>
+        <EditForm method="post" Model="course" OnValidSubmit="DeleteCourse" FormName="delete" Enhance>
+            <button type="submit" class="btn btn-danger" disabled="@(course is null)">Delete</button> |
+            <a href="/admin/courses">Back to List</a>
+        </EditForm>
+    }
+</div>
+
+@code {
+    Course? course;
+
+    [SupplyParameterFromQuery]
+    public string CourseTitleSlug { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        course = await DB.Courses.FirstOrDefaultAsync(m => m.CourseTitleSlug == CourseTitleSlug);
+
+        if (course is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    public async Task DeleteCourse()
+    {
+        DB.Courses.Remove(course!);
+        await DB.SaveChangesAsync();
+        NavigationManager.NavigateTo("/admin/courses");
+    }
+}

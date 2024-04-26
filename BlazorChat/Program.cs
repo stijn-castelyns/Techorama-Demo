@@ -1,5 +1,11 @@
 using BlazorChat.Components;
+using BlazorChat.Infra;
 using BlazorChat.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Azure;
+using System.Configuration;
+using Azure.Search.Documents;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +14,19 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddScoped<ChatService>();
+
+builder.Services.AddDbContext<CourseDbContext>(options =>
+{
+  string connectionString = builder.Configuration.GetConnectionString("U2UCourseDb");
+  options.UseSqlServer(connectionString);
+});
+
+builder.Services.AddAzureClients(options =>
+{
+  options.AddSearchClient(builder.Configuration.GetSection("AzureAISearch"));
+});
+
+builder.Services.AddQuickGridEntityFrameworkAdapter();
 
 var app = builder.Build();
 

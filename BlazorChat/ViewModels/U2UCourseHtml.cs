@@ -1,6 +1,6 @@
-﻿namespace BlazorChat.Models;
+﻿namespace BlazorChat.ViewModels;
 
-public class U2UCourse
+public class U2UCourseHtml
 {
   public string CourseTitle { get; set; }
   public int NumberOfDays { get; set; }

@@ -1,0 +1,55 @@
+﻿@page "/admin/courses/details"
+@inject BlazorChat.Infra.CourseDbContext DB
+@using BlazorChat.Models
+@inject NavigationManager NavigationManager
+@using Microsoft.EntityFrameworkCore
+
+<PageTitle>Details</PageTitle>
+
+<h1>Details</h1>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    @if (course is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">CourseTitle</dt>
+            <dd class="col-sm-10">@course.CourseTitle</dd>
+            <dt class="col-sm-2">NumberOfDays</dt>
+            <dd class="col-sm-10">@course.NumberOfDays</dd>
+            <dt class="col-sm-2">HtmlFileName</dt>
+            <dd class="col-sm-10">@course.HtmlFileName</dd>
+            <dt class="col-sm-2">LearningGoals</dt>
+            <dd class="col-sm-10">@course.LearningGoals</dd>
+            <dt class="col-sm-2">TargetAudience</dt>
+            <dd class="col-sm-10">@course.TargetAudience</dd>
+            <dt class="col-sm-2">RecommendationInfo</dt>
+            <dd class="col-sm-10">@course.RecommendationInfo</dd>
+        </dl>
+        <div>
+            <a href="@($"/admin/courses/edit?coursetitleslug={course.CourseTitleSlug}")">Edit</a> |
+            <a href="@($"/admin/courses")">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    Course? course;
+
+    [SupplyParameterFromQuery]
+    public string CourseTitleSlug { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        course = await DB.Courses.FirstOrDefaultAsync(m => m.CourseTitleSlug == CourseTitleSlug);
+
+        if (course is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}

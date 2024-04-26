@@ -1,8 +1,11 @@
-﻿@page "/courses/{pageName}"
+﻿@page "/courses/{courseTitle}"
+@using BlazorChat.ViewModels
 @using System.IO
 @using BlazorChat.Infra
 @using BlazorChat.Models
 @using Microsoft.AspNetCore.Hosting
+
+@inject BlazorChat.Infra.CourseDbContext DB
 
 
 @if (u2uCourse is not null)
@@ -31,20 +34,29 @@ else
 @code {
 
     [Parameter]
-    public string? PageName { get; set; }
+    public string? CourseTitle { get; set; }
 
     [Inject]
     public IWebHostEnvironment Environment { get; set; }
 
-    private U2UCourse u2uCourse;
+    private U2UCourseHtml u2uCourse;
 
     protected override async Task OnInitializedAsync()
     {
-        var filePath = Path.Combine(Environment.WebRootPath, $"coursepages/{PageName}");
-        if (File.Exists(filePath))
+        Course? course = DB.Courses.SingleOrDefault(c => c.CourseTitleSlug == CourseTitle);
+        if(course is null)
         {
-            string htmlContent = await File.ReadAllTextAsync(filePath);
-            u2uCourse = CoursePageInfoExtractor.ExtractCourseInfo(htmlContent);
+
         }
+        else
+        {
+            var filePath = Path.Combine(Environment.WebRootPath, $"coursepages/{course.HtmlFileName}");
+            if (File.Exists(filePath))
+            {
+                string htmlContent = await File.ReadAllTextAsync(filePath);
+                u2uCourse = CoursePageInfoExtractor.ExtractCourseInfo(htmlContent);
+            }
+        }
+        
     }
 }

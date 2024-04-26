@@ -7,7 +7,7 @@
 @using Microsoft.SemanticKernel.ChatCompletion;
 @inject IConfiguration _configuration
 @inject IJSRuntime _jsRuntime
-<div class="fixed bottom-0 right-0 m-4 mb-0 z-50 bg-white shadow-lg rounded-t-lg overflow-hidden transition-height duration-300 @(isMaximized ? "ease-in-out h-14" : "ease-in-out h-3/4")">
+<div class="fixed bottom-0 right-0 m-4 mb-0 z-50 flex flex-col justify-end bg-white shadow-lg rounded-t-lg w-80 overflow-hidden transition-all duration-300 ease-in-out @(isMinimized ? "h-14" : "h-96")">
     <div class="p-4 border-b">
         <h2 class="text-2xl text-center font-semibold">Chat</h2>
         <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-blue-300"
@@ -17,7 +17,7 @@
             </svg>
         </button>
     </div>
-    <div id="chat" class="p-4 h-96 overflow-y-scroll">
+    <div id="chat" class="p-4 h-96 overflow-y-scroll @(isMinimized ? "hidden" : "")">
         @foreach (var item in messages)
         {
             <div>
@@ -27,7 +27,7 @@
                         <div class="bg-blue-500 text-white rounded px-4 py-2 m-2">@item.Text</div>
                     </div>
                 }
-                else
+                else if (item.Role == AuthorRole.Assistant)
                 {
                     <div class="flex items-end justify-start">
                         <div class="bg-gray-200 rounded px-4 py-2 m-2">
@@ -39,7 +39,7 @@
         }
     </div>
 
-    <div class="flex justify-center items-end p-4 border-t space-x-2">
+    <div class="flex justify-between items-center p-4 border-t space-x-2 flex-none @(isMinimized ? "hidden" : "")">
         <input @bind="prompt" @onkeydown="HandleEnterPress" disabled="@Processing" type="text" class="flex-1 p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type a message...">
         <button @onclick="CallChatGPT" disabled="@Processing" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50">
             Send
@@ -54,7 +54,7 @@
     private string prompt = string.Empty;
     private string ErrorMessage = "";
     private bool Processing = false;
-    private bool isMaximized = false;
+    private bool isMinimized = true;
     private int TotalTokens = 0;
     private bool rotated = false;
     private string rotationStyle => rotated ? "transform: rotate(180deg);" : "transform: rotate(0deg);";
@@ -70,14 +70,7 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        try
-        {
-            await _jsRuntime.InvokeAsync<string>("ScrollToBottom", "chatcontainer");
-        }
-        catch
-        {
-            // do nothing if this fails
-        }
+        if (firstRender) messages = ChatService.ChatHistory.Where(c => c.Role == AuthorRole.Assistant || c.Role == AuthorRole.User).Select(c => new Message(c.Items[0].ToString(), c.Role, 0)).ToList();
     }
 
     void RestartChatGPT()
@@ -108,7 +101,7 @@
 
             var stream = ChatService.SendMessageStreamAsync(prompt);
             // Clear the prompt variable
-            prompt = "";
+            prompt = string.Empty;
             await foreach (var chunk in stream)
             {
                 messages.Last().Text += chunk;
@@ -144,11 +137,11 @@
 
     private void ToggleSize()
     {
-        isMaximized = !isMaximized;
+        isMinimized = !isMinimized;
     }
 
     private string GetButtonLabel()
     {
-        return isMaximized ? "Restore" : "Maximize";
+        return isMinimized ? "Restore" : "Maximize";
     }
 }

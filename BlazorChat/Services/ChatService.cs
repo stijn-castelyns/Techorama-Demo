@@ -5,6 +5,7 @@ using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.AspNetCore.Components;
 using BlazorChat.Plugins;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
+using Microsoft.Extensions.Azure;
 
 namespace BlazorChat.Services;
 
@@ -12,15 +13,20 @@ public class ChatService
 {
   private IConfiguration _configuration;
   private Kernel _kernel;
-  public ChatHistory ChatHistory { get; private set; } = [];
+  public static ChatHistory ChatHistory { get; private set; } = [];
   public ChatService(IConfiguration configuration, NavigationManager navigationManager)
   {
     _configuration = configuration;
     IKernelBuilder kernelBuilder = Kernel.CreateBuilder();
 
     kernelBuilder.Services.AddSingleton(navigationManager);
+    kernelBuilder.Services.AddAzureClients(options =>
+    {
+      options.AddSearchClient(_configuration.GetSection("AzureAISearch"));
+    });
 
     kernelBuilder.Plugins.AddFromType<PageNavigationPlugin>();
+    kernelBuilder.Plugins.AddFromType<CourseRecommendationPlugin>();
 
     AzureKeyCredential azureKeyCredential = new(_configuration["AzureOpenAI:AzureKeyCredential"]!);
     string deploymentName = _configuration["AzureOpenAI:DeploymentName"]!;
@@ -30,7 +36,7 @@ public class ChatService
 
     kernelBuilder.AddAzureOpenAIChatCompletion(deploymentName, openAIClient);
     _kernel = kernelBuilder.Build();
-    ChatHistory.AddSystemMessage("You are a helpfull AI assistant.");
+    ChatHistory.AddSystemMessage("You are a helpfull AI assistant. Make sure to output URLs in markdown format");
   }
 
   public async Task<string> SendMessageAsync(string message)

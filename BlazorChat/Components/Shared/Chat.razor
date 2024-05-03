@@ -7,8 +7,14 @@
 @using Microsoft.SemanticKernel.ChatCompletion;
 @inject IConfiguration _configuration
 @inject IJSRuntime _jsRuntime
-<div class="fixed bottom-0 right-0 m-4 mb-0 z-50 flex flex-col justify-end bg-white shadow-lg rounded-t-lg w-80 overflow-hidden transition-all duration-300 ease-in-out @(isMinimized ? "h-14" : "h-96")">
+@inject NavigationManager NavigationManager
+
+<div class="fixed @(isFullscreen ? "inset-0 m-auto mb-0 w-9/12 h-5/6" : "bottom-0 right-0 m-4 mb-0 z-50 flex flex-col justify-end") bg-white shadow-lg rounded-t-lg w-80 border-solid overflow-hidden transition-all duration-300 ease-in-out @(isFullscreen ? "" : (isMinimized ? "h-14" : "h-96")) flex flex-col justify-between">
     <div class="p-4 border-b">
+        <button class="absolute top-3 left-3 w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center"
+                @onclick="ToggleFullscreen">
+            <img src="images/fullscreen-icon.svg" />
+        </button>
         <h2 class="text-2xl text-center font-semibold">Chat</h2>
         <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-blue-300"
                 @onclick="@(() => {ToggleRotation(); ToggleSize();})">
@@ -39,13 +45,12 @@
         }
     </div>
 
-    <div class="flex justify-between items-center p-4 border-t space-x-2 flex-none @(isMinimized ? "hidden" : "")">
-        <input @bind="prompt" @onkeydown="HandleEnterPress" disabled="@Processing" type="text" class="flex-1 p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type a message...">
-        <button @onclick="CallChatGPT" disabled="@Processing" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50">
+    <div class="flex align-bottom p-4 border-t space-x-2 flex-none @(isMinimized ? "hidden" : "")">
+        <input @bind="prompt" @onkeydown="HandleEnterPress" disabled="@Processing" type="text" class="flex-1 p-2 border rounded align-bottom focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type a message...">
+        <button @onclick="CallChatGPT" disabled="@Processing" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold align-bottom py-2 px-4 rounded-full transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50">
             Send
         </button>
     </div>
-
 </div>
 
 
@@ -55,6 +60,7 @@
     private string ErrorMessage = "";
     private bool Processing = false;
     private bool isMinimized = true;
+    private bool isFullscreen = false;
     private int TotalTokens = 0;
     private bool rotated = false;
     private string rotationStyle => rotated ? "transform: rotate(180deg);" : "transform: rotate(0deg);";
@@ -65,12 +71,29 @@
         rotated = !rotated;
     }
 
+    private void ToggleFullscreen()
+    {
+        isMinimized = false;
+        isFullscreen = !isFullscreen;
+    }
+
     [Inject]
     public ChatService ChatService { get; set; } = default!;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender) messages = ChatService.ChatHistory.Where(c => c.Role == AuthorRole.Assistant || c.Role == AuthorRole.User).Select(c => new Message(c.Items[0].ToString(), c.Role, 0)).ToList();
+    }
+
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += HandleLocationChanged;
+    }
+
+    private void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        isFullscreen = false;
+        InvokeAsync(StateHasChanged); // Re-render the component if not automatically done
     }
 
     void RestartChatGPT()

@@ -16,7 +16,7 @@ public class CourseRecommendationPlugin
   }
 
   [KernelFunction, Description("Based on a user question related to which course might be best suited for them, this function return descriptions for U2U course that the user might be interested in")]
-  public async Task<string> GetRelevantCourses([Description("The users question related to which course they should follow")]string userQuery)
+  public async Task<List<string>> GetRelevantCourses([Description("The users question related to which course they should follow")]string userQuery)
   {
     // Create the query to send to the search service
     VectorizableTextQuery vectorQuery = new VectorizableTextQuery(userQuery)
@@ -34,7 +34,7 @@ public class CourseRecommendationPlugin
       }
     });
     List<string> searchResultsString = CreateStringRepresentation(searchResults);
-    return searchResultsString[0];
+    return searchResultsString;
   }
 
   static List<string> CreateStringRepresentation(SearchResults<Course> searchResults)

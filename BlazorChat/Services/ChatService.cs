@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Components;
 using BlazorChat.Plugins;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using Microsoft.Extensions.Azure;
+using Microsoft.SemanticKernel.PromptTemplates.Handlebars;
+using System.Reflection;
 
 namespace BlazorChat.Services;
 
@@ -18,6 +20,12 @@ public class ChatService
   {
     _configuration = configuration;
     IKernelBuilder kernelBuilder = Kernel.CreateBuilder();
+
+    kernelBuilder.Services.AddLogging((options) =>
+    {
+      options.SetMinimumLevel(LogLevel.Trace);
+      options.AddConsole();
+    });
 
     kernelBuilder.Services.AddSingleton(navigationManager);
     kernelBuilder.Services.AddAzureClients(options =>
@@ -35,7 +43,20 @@ public class ChatService
     OpenAIClient openAIClient = new(endpoint, azureKeyCredential);
 
     kernelBuilder.AddAzureOpenAIChatCompletion(deploymentName, openAIClient);
+
     _kernel = kernelBuilder.Build();
+
+    // Load prompt from YAML
+    var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("BlazorChat.Plugins.Prompts.CourseRecommendation.recommendCourse.prompt.yaml")!;
+    using StreamReader reader = new(stream);
+
+    KernelFunction courseRecommender = _kernel.CreateFunctionFromPromptYaml(
+        reader.ReadToEnd(),
+        promptTemplateFactory: new HandlebarsPromptTemplateFactory()
+    );
+
+    _kernel.Plugins.AddFromFunctions("CourseRecommender", [courseRecommender]);
+
     ChatHistory.AddSystemMessage("You are a helpfull AI assistant. Make sure to output URLs in markdown format");
   }
 

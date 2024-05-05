@@ -1,7 +1,10 @@
 ﻿@page "/admin/courses"
+@rendermode InteractiveServer
+@using Azure.Search.Documents.Indexes
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inject BlazorChat.Infra.CourseDbContext DB
 @using BlazorChat.Models
+@using Azure;
 
 <PageTitle>Index</PageTitle>
 
@@ -9,9 +12,14 @@
     Course Overview
 </h1>
 
-<p>
-    <a class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="admin/courses/create">Create New</a>
-</p>
+<div class="flex justify-between">
+    <p>
+        <a class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="admin/courses/create">Create New</a>
+    </p>
+
+    <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110" @onclick="SyncDbWithAzureAISearch">Sync Database with Azure AI Search</button>
+</div>
+
 
 <QuickGrid Class="min-w-full divide-y divide-gray-200" Items="DB.Courses">
     <PropertyColumn Property="course => course.CourseTitle" Class="px-6 py-4 text-sm font-medium text-gray-900" />
@@ -30,3 +38,16 @@
     </TemplateColumn>
 </QuickGrid>
 
+@code {
+    [Inject]
+    public IConfiguration Configuration { get; set; }
+    private async Task SyncDbWithAzureAISearch()
+    {
+        SearchIndexerClient searchIndexerClient = new SearchIndexerClient(new Uri(Configuration["AzureAISearch:endpoint"]!), new AzureKeyCredential(Configuration["AzureAISearch:credential:key"]!));
+        Response response = await searchIndexerClient.RunIndexerAsync("course-indexer");
+        if (response.IsError)
+        {
+            
+        }
+    }
+}

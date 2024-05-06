@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.16",
+  "version": "1.0.0",
+  "id": "${{TEAMS_APP_ID}}",
+  "packageName": "com.microsoft.teams.extension",
+  "developer": {
+    "name": "Teams App, Inc.",
+    "websiteUrl": "https://www.example.com",
+    "privacyUrl": "https://www.example.com/privacy",
+    "termsOfUseUrl": "https://www.example.com/termofuse"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "U2U Course Recommendation",
+    "full": "U2U Course Recommendation"
+  },
+  "description": {
+    "short": "Tool for recommending relevant U2U Courses to the user",
+    "full": "Get a recommendation for U2U courses. Search by course content. This plugin works with Microsoft Copilot for Microsoft 365. Examples: Recommend a course about ASP.NET Core. Recommend a course about web development. Suggest me a course about T-SQL. I want to know more about AI, suggest a course."
+  },
+  "accentColor": "#FFFFFF",
+  "bots": [],
+  "composeExtensions": [
+    {
+      "botId": "${{BOT_ID}}",
+      "commands": [
+        {
+          "id": "searchQuery",
+          "context": [
+            "compose",
+            "commandBox"
+          ],
+          "description": "Recommend U2U courses",
+          "title": "Search",
+          "type": "query",
+          "parameters": [
+            {
+              "name": "Interests of the user",
+              "title": "UserInterests",
+              "description": "The topics the user is interested in as well as level of experience. Example: C# for a beginner developer.",
+              "inputType": "text"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "configurableTabs": [],
+  "staticTabs": [],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

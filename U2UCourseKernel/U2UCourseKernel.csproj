@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Plugins\Prompts\CourseRecommendation\recommendCourse.prompt.yaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Plugins\Prompts\CourseRecommendation\recommendCourse.prompt.yaml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Azure.Search.Documents" Version="11.6.0-beta.3" />
+		<PackageReference Include="Microsoft.Extensions.Azure" Version="1.7.2" />
+		<PackageReference Include="Microsoft.SemanticKernel" Version="1.10.0" />
+		<PackageReference Include="Microsoft.SemanticKernel.Plugins.OpenApi" Version="1.10.0-alpha" />
+		<PackageReference Include="Microsoft.SemanticKernel.Plugins.OpenApi.Extensions" Version="1.10.0-alpha" />
+		<PackageReference Include="Microsoft.SemanticKernel.PromptTemplates.Handlebars" Version="1.10.0" />
+		<PackageReference Include="Microsoft.SemanticKernel.Yaml" Version="1.10.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\U2U-AI.API\U2U-AI.API.csproj" />
+	  <ProjectReference Include="..\U2U-AI.Infra\U2U-AI.Infra.csproj" />
+	</ItemGroup>
+
+</Project>

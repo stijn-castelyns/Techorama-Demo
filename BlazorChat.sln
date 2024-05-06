@@ -5,6 +5,10 @@ VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorChat", "BlazorChat\BlazorChat.csproj", "{7736B30B-077E-472C-BCC1-894E5842EBCC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "U2U-AI.Infra", "U2U-AI.Infra\U2U-AI.Infra.csproj", "{86B7C5C7-D20C-465F-86CD-A83DF13FF93C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "U2U-AI.API", "U2U-AI.API\U2U-AI.API.csproj", "{2EAE2BF4-2EBA-4FB6-A0B3-642029D495A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{7736B30B-077E-472C-BCC1-894E5842EBCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7736B30B-077E-472C-BCC1-894E5842EBCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7736B30B-077E-472C-BCC1-894E5842EBCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86B7C5C7-D20C-465F-86CD-A83DF13FF93C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86B7C5C7-D20C-465F-86CD-A83DF13FF93C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86B7C5C7-D20C-465F-86CD-A83DF13FF93C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86B7C5C7-D20C-465F-86CD-A83DF13FF93C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EAE2BF4-2EBA-4FB6-A0B3-642029D495A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EAE2BF4-2EBA-4FB6-A0B3-642029D495A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EAE2BF4-2EBA-4FB6-A0B3-642029D495A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EAE2BF4-2EBA-4FB6-A0B3-642029D495A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,6 @@
+@U2U_AI.API_HostAddress = http://localhost:5038
+
+GET {{U2U_AI.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

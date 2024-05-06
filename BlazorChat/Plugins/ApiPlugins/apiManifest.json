@@ -1,0 +1,20 @@
+{
+  "applicationName": "U2U Course API Plugin",
+  "description": "This plugin accesses the U2U Course API",
+  "publisher": {
+    "name": "Stijn",
+    "contactEmail": "stijn@u2u.be"
+  },
+  "apiDependencies": {
+    "mycourseapi": {
+      "apiDescriptionUrl": "https://localhost:7250/swagger/v1/swagger.yaml",
+      "requests": [
+        {
+          "method": "GET",
+          "uriTemplate": "/api/Sessions/{courseSlug}"
+        }
+      ]
+    }
+    
+  }
+}

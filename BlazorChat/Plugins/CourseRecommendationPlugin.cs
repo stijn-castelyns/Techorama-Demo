@@ -3,6 +3,7 @@ using Azure.Search.Documents.Models;
 using BlazorChat.Models;
 using Microsoft.SemanticKernel;
 using System.ComponentModel;
+using U2U_AI.Infra.Entities;
 
 namespace BlazorChat.Plugins;
 

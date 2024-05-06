@@ -7,6 +7,7 @@ using BlazorChat.Plugins;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using Microsoft.Extensions.Azure;
 using Microsoft.SemanticKernel.PromptTemplates.Handlebars;
+using Microsoft.SemanticKernel.Plugins.OpenApi.Extensions;
 using System.Reflection;
 
 namespace BlazorChat.Services;
@@ -35,6 +36,7 @@ public class ChatService
 
     kernelBuilder.Plugins.AddFromType<PageNavigationPlugin>();
     kernelBuilder.Plugins.AddFromType<CourseRecommendationPlugin>();
+    kernelBuilder.Plugins.AddFromType<BookingPlugin>();
 
     AzureKeyCredential azureKeyCredential = new(_configuration["AzureOpenAI:AzureKeyCredential"]!);
     string deploymentName = _configuration["AzureOpenAI:DeploymentName"]!;
@@ -45,6 +47,20 @@ public class ChatService
     kernelBuilder.AddAzureOpenAIChatCompletion(deploymentName, openAIClient);
 
     _kernel = kernelBuilder.Build();
+
+    var apiManifestPluginParameters = new ApiManifestPluginParameters
+    {
+      FunctionExecutionParameters = new()
+      {
+
+      }
+    };
+
+    KernelPlugin plugin =
+    _kernel.ImportPluginFromApiManifestAsync(
+        "CourseApi",                   // plugin name
+        @"C:\Users\StijnCastelyns\Documents\Techorama\BlazorChat\BlazorChat\Plugins\ApiPlugins\apiManifest.json",  // path to api manifest file
+        apiManifestPluginParameters).Result;
 
     // Load prompt from YAML
     var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("BlazorChat.Plugins.Prompts.CourseRecommendation.recommendCourse.prompt.yaml")!;

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Azure;
 using System.Configuration;
 using Azure.Search.Documents;
+using U2U_AI.Infra;
 
 var builder = WebApplication.CreateBuilder(args);
 

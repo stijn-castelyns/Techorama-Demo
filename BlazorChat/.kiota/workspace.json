@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "clients": {},
+  "plugins": {
+    "github": {
+      "types": [
+        "APIManifest"
+      ],
+      "descriptionLocation": "https://raw.githubusercontent.com/APIs-guru/openapi-directory/gh-pages/v2/specs/github.com/api.github.com/1.1.4/openapi.json",
+      "includePatterns": [
+        "**/markdown"
+      ],
+      "excludePatterns": [],
+      "outputPath": "./github"
+    }
+  }
+}

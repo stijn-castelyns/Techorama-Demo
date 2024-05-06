@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
       <UserSecretsId>f7598fcc-5ee8-4c3f-8a97-d7d1ce9c5976</UserSecretsId>
+	  <NoWarn>SKEXP0043</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,6 +34,8 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Azure" Version="1.7.2" />
     <PackageReference Include="Microsoft.SemanticKernel" Version="1.10.0" />
+    <PackageReference Include="Microsoft.SemanticKernel.Plugins.OpenApi" Version="1.10.0-alpha" />
+    <PackageReference Include="Microsoft.SemanticKernel.Plugins.OpenApi.Extensions" Version="1.10.0-alpha" />
     <PackageReference Include="Microsoft.SemanticKernel.PromptTemplates.Handlebars" Version="1.10.0" />
     <PackageReference Include="Microsoft.SemanticKernel.Yaml" Version="1.10.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
@@ -40,6 +43,11 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\coursepages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\U2U-AI.API\U2U-AI.API.csproj" />
+    <ProjectReference Include="..\U2U-AI.Infra\U2U-AI.Infra.csproj" />
   </ItemGroup>
 
 </Project>

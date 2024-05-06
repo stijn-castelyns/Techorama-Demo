@@ -9,16 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Plugins\Prompts\CourseRecommendation\recommendCourse.prompt.yaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Plugins\Prompts\CourseRecommendation\recommendCourse.prompt.yaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Azure.Search.Documents" Version="11.6.0-beta.3" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.60" />
     <PackageReference Include="Markdig" Version="0.37.0" />
@@ -48,6 +38,7 @@
   <ItemGroup>
     <ProjectReference Include="..\U2U-AI.API\U2U-AI.API.csproj" />
     <ProjectReference Include="..\U2U-AI.Infra\U2U-AI.Infra.csproj" />
+    <ProjectReference Include="..\U2UCourseKernel\U2UCourseKernel.csproj" />
   </ItemGroup>
 
 </Project>

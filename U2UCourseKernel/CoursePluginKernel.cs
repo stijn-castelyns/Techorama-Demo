@@ -21,14 +21,9 @@ public class CoursePluginKernel
   private readonly IKernelBuilder _kernelBuilder = Kernel.CreateBuilder();
   private readonly Kernel _kernel;
   
-  public CoursePluginKernel(IConfiguration configuration, NavigationManager navigationManager = null)
+  public CoursePluginKernel(IConfiguration configuration)
   {
     _configuration = configuration;
-
-    if(navigationManager is not null)
-    {
-      _kernelBuilder.Services.AddSingleton(navigationManager);
-    }
 
     _kernelBuilder.Services.AddLogging((options) =>
     {

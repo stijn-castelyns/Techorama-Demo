@@ -7,6 +7,7 @@ using Microsoft.Extensions.Azure;
 using System.Configuration;
 using Azure.Search.Documents;
 using U2U_AI.Infra;
+using U2UCourseKernel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,8 @@ builder.Services.AddAzureClients(options =>
 });
 
 builder.Services.AddQuickGridEntityFrameworkAdapter();
+
+builder.Services.AddScoped<CoursePluginKernel>();
 
 var app = builder.Build();
 

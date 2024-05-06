@@ -15,7 +15,7 @@ public class CourseRecommendationPlugin
     _searchClient = searchClient;
   }
 
-  [KernelFunction, Description("Based on a user question related to which course might be best suited for them, this function return descriptions for U2U course that the user might be interested in")]
+  [KernelFunction, Description("This function returns descriptions for U2U courses that the user might be interested in")]
   public async Task<List<Course>> GetRelevantCourses([Description("The users question related to which course they should follow")]string userQuery)
   {
     // Create the query to send to the search service
